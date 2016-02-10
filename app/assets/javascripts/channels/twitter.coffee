@@ -6,7 +6,7 @@ App.twitter = App.cable.subscriptions.create "TwitterChannel",
     # Called when the subscription has been terminated by the server
 
   received: (data) ->
-    $('#tweets').append data['content']
+    $('#tweets').prepend data['content']
     # Called when there's incoming data on the websocket for this channel
 
   tweet: (content) ->
