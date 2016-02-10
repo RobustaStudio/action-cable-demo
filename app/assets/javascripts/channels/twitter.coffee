@@ -17,3 +17,10 @@ $(document).on 'keypress', '[data-behavior~=twitter_tweet]', (event) ->
     App.twitter.tweet event.target.value
     event.target.value = ""
     event.preventDefault()
+    return
+
+$(document).on 'click', '[data-behavior~=twitter_tweet]', (event) ->
+  $('#submitButton').click ->
+    App.twitter.tweet event.target.value
+    event.target.value = ""
+    return
