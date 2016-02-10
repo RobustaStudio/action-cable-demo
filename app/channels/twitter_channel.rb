@@ -9,6 +9,6 @@ class TwitterChannel < ApplicationCable::Channel
   end
 
   def tweet data
-    ActionCable.server.broadcast "twitter_channel", content: data['content']
+    Tweet.create! content: data['content']
   end
 end

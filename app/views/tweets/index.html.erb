@@ -1,3 +1,10 @@
 <h1>Tweets#index</h1>
 
-<%= render @tweets %>
+<form>
+  <label>Add Tweet:</label><br>
+  <input type="text" data-behavior="twitter_tweet">
+</form>
+
+<div id="tweets">
+  <%= render @tweets %>
+</div>
