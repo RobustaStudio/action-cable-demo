@@ -9,6 +9,12 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   </head>
 
+  <% if user_signed_in? %>
+    <p><%= link_to 'Sign Out', destroy_user_session_path, method: :delete %></p>
+  <% else %>
+    <p><%= link_to 'Sign in to Tweet', new_user_session_path %></p>
+  <% end %>
+
   <body>
     <%= yield %>
   </body>
