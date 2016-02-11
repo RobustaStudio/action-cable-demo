@@ -6,21 +6,6 @@ App.twitter = App.cable.subscriptions.create "TwitterChannel",
     # Called when the subscription has been terminated by the server
 
   received: (data) ->
-    $('#tweets').prepend data['content']
+    $('#tweets').prepend data['tweet']
+    $('[data-behavior~=tweet_field]').val('')
     # Called when there's incoming data on the websocket for this channel
-
-  tweet: (content) ->
-    @perform 'tweet', content: content # perform TwitterChannel#tweet
-
-$(document).on 'keypress', '[data-behavior~=twitter_tweet]', (event) ->
-  if event.keyCode is 13 # return = send
-    App.twitter.tweet event.target.value
-    event.target.value = ""
-    event.preventDefault()
-    return
-
-$(document).on 'click', '[data-behavior~=twitter_tweet]', (event) ->
-  $('#submitButton').click ->
-    App.twitter.tweet event.target.value
-    event.target.value = ""
-    return

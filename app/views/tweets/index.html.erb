@@ -1,10 +1,11 @@
 <h1>Tweets#index</h1>
 
-<form>
-  <label>Add Tweet:</label><br>
-  <input type="text" data-behavior="twitter_tweet">
-  <input type="submit" value='Tweet' id="submitButton">
-</form>
+<% if current_user %>
+  <%= form_for Tweet.new, remote: true do |f|%>
+    <%= f.text_area :content, 'data-behavior' => 'tweet_field' %>
+    <%= f.submit 'Add Tweet' %>
+  <% end %>
+<% end %>
 
 <div id="tweets">
   <%= render @tweets %>

@@ -7,8 +7,4 @@ class TwitterChannel < ApplicationCable::Channel
   def unsubscribed
     # Any cleanup needed when channel is unsubscribed
   end
-
-  def tweet data
-    Tweet.create! content: data['content']
-  end
 end
