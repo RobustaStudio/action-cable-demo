@@ -1,5 +1,7 @@
-<div class="tweet">
-  <p>
-  <%= tweet.user.email %> said: <%= link_to tweet.content, tweet %>
-  </p>
-</div>
+<% cache tweet do %>
+  <div class="tweet">
+    <p>
+    <%= tweet.user.email %> said: <%= link_to tweet.content, tweet %>
+    </p>
+  </div>
+<% end %>
