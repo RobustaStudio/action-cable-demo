@@ -10,3 +10,9 @@
 <div id="tweets">
   <%= render @tweets %>
 </div>
+
+<% if user_signed_in? %>
+  <div id="onlineUsers">
+    <h3>Online Tweeters</h3>
+  </div>
+<% end %>
