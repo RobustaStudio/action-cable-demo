@@ -9,6 +9,7 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   </head>
 
+  <p><%= link_to 'Home', root_url %></p>
   <% if user_signed_in? %>
     <p><%= link_to 'Sign Out', destroy_user_session_path, method: :delete %></p>
   <% else %>
