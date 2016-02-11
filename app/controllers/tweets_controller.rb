@@ -10,7 +10,7 @@ class TweetsController < ApplicationController
   end
 
   def create
-    @tweet = Tweet.create! tweet_params
+    @tweet = current_user.tweets.create! tweet_params
 
     ActionCable.server.broadcast "twitter_channel", tweet: render_tweet(@tweet)
 
