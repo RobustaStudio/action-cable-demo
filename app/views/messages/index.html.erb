@@ -3,14 +3,16 @@
     <h1>Messages#index</h1>
 
     <div class="text-center">
-      <div id="tweets">
+      <div id="messages">
         <%= render @messages %>
       </div>
     </div>
 
-    <form>
-      <input type="text" data-behavior="new-message">
-      <input type="submit" value='Send' id="submitMessageButton">
-    </form>
+    <%= form_for Message.new, remote: true do |f|%>
+      <%= f.text_area :content, 'data-behavior' => 'new_message_field' %>
+      <%= f.hidden_field :recipient_id, value: params[:recipient] %>
+      <%= f.submit 'Send', class: 'button' %>
+    <% end %>
+
   </div>
 </div>
