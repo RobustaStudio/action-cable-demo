@@ -10,12 +10,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   </head>
 
-  <p><%= link_to 'Home', root_url %></p>
-  <% if user_signed_in? %>
-    <p><%= link_to 'Sign Out', destroy_user_session_path, method: :delete %></p>
-  <% else %>
-    <p><%= link_to 'Sign in to Tweet', new_user_session_path %></p>
-  <% end %>
+  <p>
+    <%= link_to 'Home', root_url %> |
+    <% if user_signed_in? %>
+      <%= link_to 'Sign Out', destroy_user_session_path, method: :delete %> |
+      <%= link_to 'Messages', messages_path %>
+    <% else %>
+      <%= link_to 'Sign in to Tweet', new_user_session_path %>
+    <% end %>
+  </p>
 
   <body>
     <%= yield %>
