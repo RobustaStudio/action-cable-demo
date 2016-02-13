@@ -1,12 +1,15 @@
 class MessagesController < ApplicationController
   def index
-    @messages = Message.all
+    p params.inspect
+    @messages = Message.where recipient_id: params[:recipient]
   end
 
   def create
     @message = Message.create! message_params
 
-    ActionCable.server.broadcast "message_channel",
+    p "@!#!@#!@#@!#@!#!@#@! CONTROLLER >> #{params[:message][:recipient_id]}"
+
+    ActionCable.server.broadcast "message_channel_#{params[:message][:recipient_id]}",
                                   message: render_message(@message)
 
     head :ok

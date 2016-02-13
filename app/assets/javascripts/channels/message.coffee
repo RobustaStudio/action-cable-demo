@@ -1,11 +1,15 @@
-App.message = App.cable.subscriptions.create "MessageChannel",
-  connected: ->
-    # Called when the subscription is ready for use on the server
+$ ->
+  window.id = $('#recipient_field').attr('value')
 
-  disconnected: ->
-    # Called when the subscription has been terminated by the server
+  App.message = App.cable.subscriptions.create { channel: "MessageChannel", recipient: id },
+    connected: ->
+      # Called when the subscription is ready for use on the server
 
-  received: (data) ->
-    $('#messages').append data['message']
-    $('[data-behavior~=new_message_field]').val('')
-    # Called when there's incoming data on the websocket for this channel
+    disconnected: ->
+      # Called when the subscription has been terminated by the server
+
+    received: (data) ->
+      alert id
+      $('#messages_' + id).append data['message']
+      $('[data-behavior~=new_message_field]').val('')
+      # Called when there's incoming data on the websocket for this channel
