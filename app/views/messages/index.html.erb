@@ -1,1 +1,16 @@
-<h1>Messages#index</h1>
+<div class="row">
+  <div class="large-6 large-centered columns">
+    <h1>Messages#index</h1>
+
+    <div class="text-center">
+      <div id="tweets">
+        <%= render @messages %>
+      </div>
+    </div>
+
+    <form>
+      <input type="text" data-behavior="new-message">
+      <input type="submit" value='Send' id="submitMessageButton">
+    </form>
+  </div>
+</div>
