@@ -5,5 +5,5 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :tweets, dependent: :destroy
-  has_many :messages, dependent: :destroy, foreign_key: :sender_id
+  has_many :conversations, foreign_key: :sender_id
 end
