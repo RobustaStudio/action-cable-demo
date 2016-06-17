@@ -3,7 +3,7 @@ class MessagesController < ApplicationController
 
   def create
     @message = @conversation.messages.create message_params
-    ActionCable.server.broadcast "message_channel",
+    ActionCable.server.broadcast "message_channel_#{@conversation.id}",
                                   message: render_message(@message)
   end
 
