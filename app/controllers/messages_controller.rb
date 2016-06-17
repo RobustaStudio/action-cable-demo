@@ -3,7 +3,8 @@ class MessagesController < ApplicationController
 
   def create
     @message = @conversation.messages.create message_params
-    redirect_to @conversation
+    ActionCable.server.broadcast "message_channel",
+                                  message: render_message(@message)
   end
 
   private

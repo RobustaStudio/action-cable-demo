@@ -1,8 +1,7 @@
 <% cache message do %>
   <div class="message">
-    <p>
-    <%= message.sender.email %>: <%= message.content %>
-    </p>
+    <h3>
+    <%= message.user.email %>: <%= message.body %>
+    </h3>
   </div>
 <% end %>
-

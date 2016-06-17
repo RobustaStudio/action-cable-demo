@@ -9,7 +9,6 @@ $ ->
       # Called when the subscription has been terminated by the server
 
     received: (data) ->
-      alert id
-      $('#messages_' + id).append data['message']
+      $('#messages').append data['message']
       $('[data-behavior~=new_message_field]').val('')
       # Called when there's incoming data on the websocket for this channel

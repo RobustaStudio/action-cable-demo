@@ -1,14 +1,9 @@
 <%= @conversation.sender.email %>
 <%= @conversation.recipient.email %>
 
-<% @conversation.messages.each do |msg| %>
-  <h1>
-    <%= msg.user.email %>:
-    <%= msg.body %>
-  </h1>
-<% end %>
+<%= render(partial: 'messages/messages', locals: { messages: @conversation.messages }) %>
 
-<%= form_for [@conversation, Message.new] do |f|%>
+<%= form_for [@conversation, Message.new], remote: true do |f|%>
   <%= f.text_area :body, 'data-behavior' => 'new_message_field' %>
   <%= f.submit 'Send', class: 'button' %>
 <% end %>
