@@ -1,25 +1,19 @@
 class MessagesController < ApplicationController
-  def index
-    p params.inspect
-    @messages = Message.where recipient_id: params[:recipient]
-  end
+  before_action :set_conversation
 
   def create
-    @message = Message.create! message_params
-
-    p "@!#!@#!@#@!#@!#!@#@! CONTROLLER >> #{params[:message][:recipient_id]}"
-
-    ActionCable.server.broadcast "message_channel_#{params[:message][:recipient_id]}",
-                                  message: render_message(@message)
-
-    head :ok
+    @message = @conversation.messages.create message_params
+    redirect_to @conversation
   end
 
   private
 
   def message_params
-   params.require(:message).permit(:content, :recipient_id)
-                            .merge(sender_id: current_user.id)
+    params.require(:message).permit(:body).merge(user_id: current_user.id)
+  end
+
+  def set_conversation
+    @conversation = Conversation.mine(current_user).find(params[:conversation_id])
   end
 
   def render_message(message)
