@@ -1,25 +1,22 @@
-<div class="row">
-  <div class="large-8 large-centered columns">
-    <h1>Tweets#index</h1>
-
-    <% if current_user %>
-      <%= form_for Tweet.new, remote: true do |f|%>
-        <%= f.text_area :content, 'data-behavior' => 'tweet_field' %>
-        <%= f.submit 'Add Tweet', class: 'button' %>
-      <% end %>
-    <% end %>
-
-    <div class="text-center">
-      <div id="tweets">
-        <%= render @tweets %>
-      </div>
-    </div>
-
-  </div>
+<div class="text-center">
+  <h3>Recent Tweets</h3>
 </div>
 
-<% if user_signed_in? %>
-  <div id="onlineUsers">
-    <h3>Online Tweeters</h3>
-  </div>
+<br>
+
+<% if current_user %>
+  <%= form_for Tweet.new, remote: true do |f|%>
+    <%= f.text_area :content, placeholder: 'New Tweet', 'data-behavior' => 'tweet_field' %>
+    <div class="right">
+      <%= f.submit 'Add Tweet', class: 'button' %>
+    </div>
+  <% end %>
 <% end %>
+
+<br>
+
+<div class="text-center">
+  <div id="tweets">
+    <%= render @tweets %>
+  </div>
+</div>

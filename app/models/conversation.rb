@@ -6,6 +6,7 @@ class Conversation < ApplicationRecord
 
   validates_uniqueness_of :sender_id, scope: :recipient_id
 
+  default_scope { order(updated_at: :desc) }
   scope :between, lambda { |sender_id, recipient_id|
     where('(conversations.sender_id = ? AND conversations.recipient_id = ?) OR
           (conversations.sender_id = ? AND conversations.recipient_id = ?)',
@@ -14,4 +15,15 @@ class Conversation < ApplicationRecord
   scope :mine, lambda { |my_id|
     where('conversations.sender_id = ? OR conversations.recipient_id = ?', my_id, my_id)
   }
+
+  def with me
+    other = case me
+            when sender
+              recipient
+            when recipient
+              sender
+            end
+
+    other
+  end
 end

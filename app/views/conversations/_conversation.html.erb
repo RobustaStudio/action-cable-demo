@@ -1,0 +1,6 @@
+<div class="callout text-center">
+  <h5>
+    <%= link_to conversation.with(current_user).email, conversation %>
+  </h5>
+  <p><%= conversation.messages.last.body %></p>
+</div>

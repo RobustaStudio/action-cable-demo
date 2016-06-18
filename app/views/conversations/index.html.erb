@@ -1,20 +1,7 @@
-<div class="row">
-  <div class="large-3 columns">
-    <ul class="side-nav">
-      <% User.all.each do |user| %>
-        <li><%= link_to user.email, conversations_path(recipient_id: user.id), method: :post %></li>
-      <% end %>
-    </ul>
-  </div>
-
-  <div class="large-9 columns">
-      <h1>Messages#index</h1>
-
-      <div class="text-center">
-        <% @conversations.each do |conversation| %>
-          conversation
-          <%= link_to conversation.id, conversation %>
-        <% end %>
-      </div>
-  </div>
+<div class="text-center">
+  <h3>Messages</h3>
 </div>
+
+<br>
+
+<%= render @conversations %>

@@ -10,17 +10,37 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   </head>
 
-  <p>
-    <%= link_to 'Home', root_url %> |
-    <% if user_signed_in? %>
-      <%= link_to 'Sign Out', destroy_user_session_path, method: :delete %> |
-      <%= link_to 'Messages', conversations_path %>
-    <% else %>
-      <%= link_to 'Sign in to Tweet', new_user_session_path %>
-    <% end %>
-  </p>
-
   <body>
-    <%= yield %>
+    <div class="top-bar">
+      <div class="top-bar-left">
+        <ul class="dropdown menu" data-dropdown-menu>
+          <li class="menu-text">TwitterCable</li>
+          <li>
+            <%= link_to 'Tweets', root_url %>
+          </li>
+          <li>
+            <%= link_to 'Messages', conversations_path %>
+          </li>
+          <% if user_signed_in? %>
+            <li>
+                <%= link_to 'Sign out', destroy_user_session_path, method: :delete %>
+            </li>
+          <% else %>
+            <li>
+              <%= link_to 'Sign in to Tweet', new_user_session_path %>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+
+    <br><br><br>
+
+    <div class="row">
+      <div class="large-6 large-centered columns">
+        <%= yield %>
+      </div>
+    </div>
+
   </body>
 </html>

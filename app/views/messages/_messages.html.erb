@@ -1,7 +1,0 @@
-<%= content_tag :div, id: "messages_#{conversation.id}"  do %>
-  <% messages.each do |msg| %>
-    <h3>
-      <%= msg.user.email %>: <%= msg.body %>
-    </h3>
-  <% end %>
-<% end %>
