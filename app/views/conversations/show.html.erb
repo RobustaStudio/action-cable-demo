@@ -1,0 +1,19 @@
+<div class="text-center">
+  <h3>
+    <%= @conversation.with(current_user).email %>
+  </h3>
+</div>
+
+<br>
+
+<%= content_tag :div, id: "messages_#{@conversation.id}"  do %>
+  <%= render @conversation.messages, conversation: @conversation %>
+<% end %>
+
+<br>
+
+<%= form_for [@conversation, Message.new], remote: true do |f|%>
+  <%= f.text_area :body, placeholder: 'New Nessage', 'data-behavior' => 'new_message_field' %>
+  <%= f.hidden_field :conversation_id, value: params[:id], id: 'conversation_id' %>
+  <%= f.submit 'Send', class: 'button' %>
+<% end %>

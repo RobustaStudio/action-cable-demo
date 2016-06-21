@@ -5,10 +5,6 @@ class TweetsController < ApplicationController
     @tweets = Tweet.all.order("created_at DESC")
   end
 
-  def show
-    @tweet = Tweet.find(params[:id])
-  end
-
   def create
     @tweet = current_user.tweets.create! tweet_params
 

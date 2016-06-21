@@ -1,0 +1,5 @@
+<h5>Online Users</h5>
+<% $redis.smembers('online').each do |id| %>
+  <%= link_to User.find(id).email, conversations_path(recipient_id: id), method: :post %>
+<% end %>
+

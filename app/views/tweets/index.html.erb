@@ -1,12 +1,22 @@
-<h1>Tweets#index</h1>
+<div class="text-center">
+  <h3>Recent Tweets</h3>
+</div>
+
+<br>
 
 <% if current_user %>
   <%= form_for Tweet.new, remote: true do |f|%>
-    <%= f.text_area :content, 'data-behavior' => 'tweet_field' %>
-    <%= f.submit 'Add Tweet' %>
+    <%= f.text_area :content, placeholder: 'New Tweet', 'data-behavior' => 'tweet_field' %>
+    <div class="right">
+      <%= f.submit 'Add Tweet', class: 'button' %>
+    </div>
   <% end %>
 <% end %>
 
-<div id="tweets">
-  <%= render @tweets %>
+<br>
+
+<div class="text-center">
+  <div id="tweets">
+    <%= render @tweets %>
+  </div>
 </div>
