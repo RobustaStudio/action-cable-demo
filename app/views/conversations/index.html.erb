@@ -4,4 +4,14 @@
 
 <br>
 
-<%= render @conversations %>
+<div class="row">
+  <div class="large-6 columns">
+    <div id="onlineUsers">
+      <%= render partial: 'online_users'%>
+    </div>
+  </div>
+
+  <div class="large-6 columns">
+    <%= render @conversations %>
+  </div>
+</div>
