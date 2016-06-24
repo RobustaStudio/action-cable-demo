@@ -1,7 +1,8 @@
 $ ->
   window.conversation_id = $('#conversation_id').attr('value')
 
-  App.message = App.cable.subscriptions.create { channel: "MessageChannel", conversation_id: conversation_id },
+  App.message = App.cable.subscriptions.create { channel: "MessageChannel",
+                                                 conversation_id: conversation_id },
     connected: ->
       # Called when the subscription is ready for use on the server
 
