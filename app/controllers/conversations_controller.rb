@@ -28,8 +28,4 @@ class ConversationsController < ApplicationController
   def conversation_params
     params.permit(:recipient_id).merge(sender_id: current_user.id)
   end
-
-  def message_params
-    params.permit(:body).merge(user_id: current_user.id)
-  end
 end
