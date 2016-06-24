@@ -14,6 +14,6 @@ class OnlineUsersChannel < ApplicationCable::Channel
   private
 
   def render_online_users
-    ApplicationController.renderer.render(partial: 'conversations/online_users')
+    ApplicationController.renderer.render(partial: 'users/online_users')
   end
 end
